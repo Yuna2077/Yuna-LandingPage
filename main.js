@@ -90,13 +90,14 @@ function escapeRegExp(str) { return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$
 function escapeSpace(str) { return str.replace(" ", ""); }; // seems like what i needed was so easy to make
 function choose(arr) { return arr[Math.floor(Math.random()*arr.length)]; };
 function toCss(colors) { return Object.entries(colors).map(function (e) { return "--" + e[0] + ":" + e[1] + ";"; }).join(""); };
+function truncate({str, max}) { if (!str || typeof str !== "string") return str; return str.length > max ? str.slice(0, max-3) + "...":str };
 
 add_project = function(vars) {
     document.querySelector("#section-projects").innerHTML += `
     <a class="card" href="${vars.link}">
         <span class="tag">${vars.lang}</span>
         <h3>${vars.name}</h3>
-        <p>${vars.desc}</p>
+        <p>${truncate({ str: vars.desc, max: 50 })}</p>
      </a>`
 }
 
