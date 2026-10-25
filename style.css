@@ -1,0 +1,243 @@
+/* • • • • • • • • • • • • • • • •
+Copyright (C) 2026 Yuna2077 - All rights Reserved
+You may use, distribute or modify this code under the terms of AGPLv3 license.
+    License: https://choosealicense.com/licenses/agpl-3.0/
+ • • • • • • • • • • • • • • • • */
+
+
+:root {
+  --bg: #f3f6fa;
+  --surface: #ffffff;
+  --ink: #14182b;
+  --muted: #566079;
+  --line: #d3dbe8;
+  --teal: #0e9c92;
+  --pink: #d6336c;
+  --px: #14182b;
+  --pxon: #0e9c92;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1022;
+    --surface: #161a33;
+    --ink: #eef1fb;
+    --muted: #9aa3c4;
+    --line: #2a3058;
+    --teal: #39d5c8;
+    --pink: #ff6fa5;
+    --px: #eef1fb;
+    --pxon: #39d5c8;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1022;
+  --surface: #161a33;
+  --ink: #eef1fb;
+  --muted: #9aa3c4;
+  --line: #2a3058;
+  --teal: #39d5c8;
+  --pink: #ff6fa5;
+  --px: #eef1fb;
+  --pxon: #39d5c8;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.6 "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+
+header.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  padding: 72px 0 56px;
+}
+
+h1 {
+  font: 800 clamp(3.2rem, 11vw, 6.5rem) / 0.95 "Arial Black", "Trebuchet MS", sans-serif;
+  letter-spacing: -0.03em;
+  margin: 0 0 20px;
+}
+
+.lede {
+  font-size: 1.25rem;
+  max-width: 34ch;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 2px solid var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn.alt {
+  background: transparent;
+  color: var(--ink);
+}
+.btn:hover {
+  border-color: var(--pink);
+  background: var(--pink);
+  color: #fff;
+}
+
+#mark {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 4px;
+  width: min(300px, 70vw);
+}
+#mark i {
+  aspect-ratio: 1;
+  background: var(--line);
+  display: block;
+}
+#mark i.on {
+  background: var(--px);
+}
+#mark i.hi {
+  background: var(--pxon);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #mark i.hi {
+    animation: blink 2.4s steps(2, jump-none) infinite;
+  }
+
+  #mark i.hi:nth-child(odd) {
+    animation-delay: 1.2s;
+  }
+}
+
+@keyframes blink {
+  50% {
+    background: var(--pink);
+  }
+}
+
+
+section {
+  padding: 40px 0;
+  border-top: 2px solid var(--line);
+}
+
+h2 {
+  font: 800 1.9rem / 1.2 "Arial Black", "Trebuchet MS", sans-serif;
+  margin: 0 0 20px;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.card:hover {
+  border-color: var(--teal);
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+.card p {
+  margin: 0;
+  color: var(--muted);
+  flex: 1;
+}
+.tag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.facts b {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+footer {
+  padding: 32px 0 48px;
+  border-top: 2px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+  header.hero {
+    grid-template-columns: 1fr;
+    padding-top: 48px;
+  }
+
+  #mark {
+    order: -1;
+  }
+}
+
+/*  • • • • • • • • • • • • • • • •
+    ╔═══════════════════════════════════════════════════════════════════════════════╗
+    ║ ██╗   ██╗██╗   ██╗███╗   ██╗ █████╗       ██████╗ ██████╗ ██████╗ ███████╗
+    ║ ╚██╗ ██╔╝██║   ██║████╗  ██║██╔══██╗     ██╔════╝██╔═══██╗██╔══██╗██╔════╝
+    ║  ╚████╔╝ ██║   ██║██╔██╗ ██║███████║     ██║     ██║   ██║██║  ██║█████╗
+    ║   ╚██╔╝  ██║   ██║██║╚██╗██║██╔══██║     ██║     ██║   ██║██║  ██║██╔══╝
+    ║    ██║   ╚██████╔╝██║ ╚████║██║  ██║     ╚██████╗╚██████╔╝██████╔╝███████╗
+    ║    ╚═╝    ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝      ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
+    ╚═══════════════════════════════════════════════════════════════════════════════╝
+ • • • • • • • • • • • • • • • • */
