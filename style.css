@@ -7,6 +7,7 @@ You may use, distribute or modify this code under the terms of AGPLv3 license.
 
 :root {
   --bg: #f3f6fa;
+  --bgl: #f3f6fa;
   --surface: #ffffff;
   --ink: #14182b;
   --muted: #566079;
@@ -24,6 +25,7 @@ You may use, distribute or modify this code under the terms of AGPLv3 license.
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0d1022;
+    --bgl: #0d1022;
     --surface: #161a33;
     --ink: #eef1fb;
     --muted: #9aa3c4;
@@ -37,6 +39,7 @@ You may use, distribute or modify this code under the terms of AGPLv3 license.
 
 :root[data-theme="dark"] {
   --bg: #0d1022;
+  --bgl: #0d1022;
   --surface: #161a33;
   --ink: #eef1fb;
   --muted: #9aa3c4;
@@ -55,7 +58,16 @@ html {
 }
 body {
   margin: 0;
-  background: var(--bg);
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 55% at 12% 0%,
+      color-mix(in srgb, var(--teal) 22%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 50% at 100% 100%,
+      color-mix(in srgb, var(--pink) 18%, transparent) 0%, transparent 70%),
+    linear-gradient(180deg,
+      var(--bg) 0%,
+      color-mix(in srgb, var(--bg) 90%, var(--pink)) 100%);
+  background-attachment: fixed;
   color: var(--ink);
   font: 17px/1.6 "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
 }
@@ -110,6 +122,7 @@ h1 {
   font-weight: 700;
   background: var(--ink);
   color: var(--bg);
+  border-radius: 10px;
 }
 .btn.alt {
   background: transparent;
@@ -181,6 +194,7 @@ h2 {
   flex-direction: column;
   gap: 10px;
   text-decoration: none;
+  border-radius: 10px;
 }
 
 .card:hover {
