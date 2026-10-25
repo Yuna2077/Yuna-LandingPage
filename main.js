@@ -87,7 +87,9 @@ site.startup = function() {
         });
       });
       el.innerHTML = h;
-}
+};
+
+document.addEventListener("DOMContentLoaded", site.startup);
  
  /*  • • • • • • • • • • • • • • • •
     ╔═══════════════════════════════════════════════════════════════════════════════╗
