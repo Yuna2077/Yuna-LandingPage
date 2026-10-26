@@ -183,7 +183,7 @@ h2::after {
   content: "";
   width: 14px;
   height: 1.8rem;
-  background: linear-gradient(0deg, var(--pink), var(--teal) 100%);
+  background: linear-gradient(0deg, var(--teal), var(--pink) 100%);
   transform: skewX(-18deg);
   border-radius: 2px;
 }
