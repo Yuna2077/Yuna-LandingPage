@@ -217,6 +217,14 @@ h2::after {
   text-decoration: none;
   transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
 }
+.card .crop {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  display: block;
+}
 
 .card:hover {
   transform: translateY(-6px);
